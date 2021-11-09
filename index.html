@@ -9,14 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/all.css">
 </head>
 <body>
     <!-- BEM : Block Element Modifier-->
     <div class="app">
         <header class="header">
-            <div class="grid">
-                <nav class="header__navbar">
+            <div class="grid wide">
+                <nav class="header__navbar hide-on-mobile-tablet">
                     <ul class="header__navbar-list">
                         <li class="header__navbar-item header__navbar-item--separate">Kênh người bán</li>
                         <li class="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate">
@@ -141,7 +143,11 @@
 
                 <!--Header with search-->
                 <div class="header-with-search">
-                    <div class="header__logo">
+                    <div class="header__mobile-navbar ">
+                        <i class="header__mobile-navbar-icon fas fa-bars"></i>
+                    </div>
+                    
+                    <div class="header__logo hide-on-tablet">
                         <a href="#" class="header__logo-link">
                             <svg viewBox="0 0 192 65" class="header__logo-img">
                                 <g fill-rule="evenodd">
@@ -152,8 +158,14 @@
                             </svg>
                         </a>
                     </div>
+                    
+                    <label for="mobile-search-checkbox" class="header__mobile-search hide-on-tablet">
+                        <i class="header__mobile-search-icon fas fa-search"></i>
+                    </label>
 
-                    <div class="header__search">
+                    <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
+
+                    <div class="header__search ">
                         <div class="header__search-input-wrap">
                             <input type="text" class="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm">
                             <!--Search history-->
@@ -318,12 +330,26 @@
                     </div>
                 </div>
             </div>
+            <ul class="header__sort-bar">
+                <li class="header__sort-item">
+                    <a href="" class="header__sort-link">Liên quan</a>
+                </li>
+                <li class="header__sort-item header__sort-item--active">
+                    <a href="" class="header__sort-link">Mới nhất</a>
+                </li>
+                <li class="header__sort-item">
+                    <a href="" class="header__sort-link">Bán chạy</a>
+                </li>
+                <li class="header__sort-item">
+                    <a href="" class="header__sort-link">Giá <i class="header__sort-icon fas fa-angle-down"></i></a>
+                </li>
+            </ul>
         </header>
         <!--Phần content-->
         <div class="app__container">
-            <div class="grid">
-                <div class="grid__row app__content">
-                    <div class="grid__column-2">
+            <div class="grid wide">
+                <div class="row sm-gutter app__content">
+                    <div class="col l-2 m-0 c-0">
                         <nav class="category">
                             <h3 class="category__heading">
                                 <i class="category__heading-icon fas fa-list"></i>
@@ -352,8 +378,8 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="grid__column-10">
-                        <div class="home-filter">
+                    <div class="col l-10 m-12 c-12">
+                        <div class="home-filter hide-on-mobile-tablet">
                             <span class="home-filter__label">Sắp xếp theo</span>
                             <button class="btn home-filter__btn">Phổ biến</button>
                             <button class="btn home-filter__btn btn--primary">Mới nhất</button>
@@ -386,18 +412,87 @@
                                 </div>
                             </div>
                         </div>
-
+                        <nav class="mobile-categogy">
+                            <ul class="mobile-categogy__list">
+                                <li class="mobile-categogy__item ">
+                                    <a href="" class="mobile-categogy__link mobile-categogy--active">
+                                        <div class="mobile-categogy__link-item">
+                                            <i class="fas fa-thumbs-up"></i> 
+                                        </div>
+                                        Tất cả 
+                                    </a>
+                                </li>
+                                <li class="mobile-categogy__item">
+                                    <a href="" class="mobile-categogy__link">
+                                        <div class="mobile-categogy__link-item">
+                                            <i class="mobile-categogy-icon fas fa-cart-arrow-down"></i>
+                                        </div>
+                                        Siêu Sale
+                                    </a>
+                                </li>
+                                <li class="mobile-categogy__item">
+                                    <a href="" class="mobile-categogy__link">
+                                        <div class="mobile-categogy__link-item">
+                                        
+                                            <svg height="12" viewBox="0 0 20 12" width="20" class="shopee-svg-icon icon-free-shipping">
+                                                <g fill="none" fill-rule="evenodd" transform="">
+                                                    <rect fill="#00bfa5" fill-rule="evenodd" height="9" rx="1" width="12" x="4"></rect>
+                                                    <rect height="8" rx="1" stroke="#00bfa5" width="11" x="4.5" y=".5"></rect>
+                                                    <rect fill="#00bfa5" fill-rule="evenodd" height="7" rx="1" width="7" x="13" y="2"></rect>
+                                                    <rect height="6" rx="1" stroke="#00bfa5" width="6" x="13.5" y="2.5"></rect>
+                                                    <circle cx="8" cy="10" fill="#00bfa5" r="2"></circle>
+                                                    <circle cx="15" cy="10" fill="#00bfa5" r="2"></circle>
+                                                    <path
+                                                        d="m6.7082481 6.7999878h-.7082481v-4.2275391h2.8488017v.5976563h-2.1405536v1.2978515h1.9603297v.5800782h-1.9603297zm2.6762505 0v-3.1904297h.6544972v.4892578h.0505892c.0980164-.3134765.4774351-.5419922.9264138-.5419922.0980165 0 .2276512.0087891.3003731.0263672v.6210938c-.053751-.0175782-.2624312-.038086-.3762568-.038086-.5122152 0-.8758247.3017578-.8758247.75v1.8837891zm3.608988-2.7158203c-.5027297 0-.8536919.328125-.8916338.8261719h1.7390022c-.0158092-.5009766-.3446386-.8261719-.8473684-.8261719zm.8442065 1.8544922h.6544972c-.1549293.571289-.7050863.9228515-1.49238.9228515-.9864885 0-1.5903965-.6269531-1.5903965-1.6464843 0-1.0195313.6165553-1.6669922 1.5872347-1.6669922.9580321 0 1.5366455.6064453 1.5366455 1.6083984v.2197266h-2.4314412v.0351562c.0221328.5595703.373095.9140625.9169284.9140625.4110369 0 .6924391-.1376953.8189119-.3867187zm2.6224996-1.8544922c-.5027297 0-.853692.328125-.8916339.8261719h1.7390022c-.0158091-.5009766-.3446386-.8261719-.8473683-.8261719zm.8442064 1.8544922h.6544972c-.1549293.571289-.7050863.9228515-1.49238.9228515-.9864885 0-1.5903965-.6269531-1.5903965-1.6464843 0-1.0195313.6165553-1.6669922 1.5872347-1.6669922.9580321 0 1.5366455.6064453 1.5366455 1.6083984v.2197266h-2.4314412v.0351562c.0221328.5595703.373095.9140625.9169284.9140625.4110369 0 .6924391-.1376953.8189119-.3867187z"
+                                                        fill="#fff"></path>
+                                                    <path d="m .5 8.5h3.5v1h-3.5z" fill="#00bfa5"></path>
+                                                    <path d="m0 10.15674h3.5v1h-3.5z" fill="#00bfa5"></path>
+                                                    <circle cx="8" cy="10" fill="#047565" r="1"></circle>
+                                                    <circle cx="15" cy="10" fill="#047565" r="1"></circle>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        Freeship Xtra
+                                    </a>
+                                </li>
+                                <li class="mobile-categogy__item">
+                                    <a href="" class="mobile-categogy__link">Hoàn xu đơn bất kỳ</a>
+                                </li>
+                                <li class="mobile-categogy__item">
+                                    <a href="" class="mobile-categogy__link">
+                                        <!-- <div class="mobile-categogy__link-item">
+                                            <img src="" alt="" class="mobile-categogy-link-img">
+                                        </div> -->
+                                        Sắc đẹp
+                                    </a>
+                                </li>
+                                <li class="mobile-categogy__item">
+                                    <a href="" class="mobile-categogy__link">Giày dép nữ</a>
+                                </li>
+                                <li class="mobile-categogy__item">
+                                    <a href="" class="mobile-categogy__link">Phụ kiện và trang sức</a>
+                                </li>
+                                <li class="mobile-categogy__item">
+                                    <a href="" class="mobile-categogy__link">Thời trang nữ</a>
+                                </li>
+                                <li class="mobile-categogy__item">
+                                    <a href="" class="mobile-categogy__link">Mỹ phẩm</a>
+                                </li>
+                                
+                            
+                            </ul>
+                        </nav>
                         <div class="home-product">
-                            <div class="grid__row">
+                            <div class="row sm-gutter">
                                 <!--Product item-->
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/0c6a965b3024a4683e6f2d2973a46454_tn);"></div>
                                             <h4 class="home-product-item__name">Bộ 10 Mỹ Phẩm Trang Điểm PINKFLASH Kèm Túi Đựng Dùng Làm Quà Tặng Giáng Sinh Độc Đáo</h4>
                                             <div class="home-product-item__price">                                        
-                                                    <span class="home-product-item__price-old">250.000đ</span>
-                                                    <span class="home-product-item__price-current">140.000đ</span>               
+                                                    <span class="home-product-item__price-old">360.000đ</span>
+                                                    <span class="home-product-item__price-current">250.0000đ</span>               
                                                 <div class="home-product-item__icon-freeship">
                                                     <svg height="12" viewBox="0 0 20 12" width="20" class="shopee-svg-icon icon-free-shipping">
                                                         <g fill="none" fill-rule="evenodd" transform="">
@@ -430,12 +525,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>1</Span>
-                                                    </span>
+        
                                                 </div>
-                                               
+                                            <div class="home-product-item__sold">Đã bán 1</div>
                                             </div>
     
                                             <div class="home-product-item__origin">
@@ -453,7 +545,7 @@
                                     </a>                                  
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -496,12 +588,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>539</Span>
-                                                    </span>
+                                                
                                                 </div>
-                                    
+                                                <div class="home-product-item__sold">Đã bán 2,3k</div>
                                             </div>
                                     
                                             <div class="home-product-item__origin">
@@ -519,7 +608,7 @@
                                     </a>                         
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -562,11 +651,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>2</Span>
-                                                    </span>
+                                                
                                                 </div>
+                                                <div class="home-product-item__sold">Đã bán 15,2k</div>
                                     
                                             </div>
                                     
@@ -585,7 +672,7 @@
                                     </a>                               
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -628,12 +715,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>1,2k</Span>
-                                                    </span>
+                                                    
                                                 </div>
-                                    
+                                                <div class="home-product-item__sold">Đã bán 1,2k</div>
                                             </div>
                                     
                                             <div class="home-product-item__origin">
@@ -651,7 +735,7 @@
                                     </a>                              
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -694,12 +778,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>1</Span>
-                                                    </span>
+                                                
                                                 </div>
-                                    
+                                                <div class="home-product-item__sold">Đã bán 15</div>
                                             </div>
                                     
                                             <div class="home-product-item__origin">
@@ -717,7 +798,7 @@
                                     </a>                           
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -760,12 +841,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>4,4k</Span>
-                                                    </span>
+                                                    
                                                 </div>
-                                    
+                                                <div class="home-product-item__sold">Đã bán 12,5k</div>
                                             </div>
                                     
                                             <div class="home-product-item__origin">
@@ -783,7 +861,7 @@
                                     </a>                             
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -826,12 +904,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>578</Span>
-                                                    </span>
+                                                   
                                                 </div>
-                                    
+                                                <div class="home-product-item__sold">Đã bán 100</div>
                                             </div>
                                     
                                             <div class="home-product-item__origin">
@@ -849,7 +924,7 @@
                                     </a>                             
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -892,12 +967,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>200</Span>
-                                                    </span>
+                                                    
                                                 </div>
-                                    
+                                                <div class="home-product-item__sold">Đã bán 152</div>
                                             </div>
                                     
                                             <div class="home-product-item__origin">
@@ -915,7 +987,7 @@
                                     </a>                              
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -958,12 +1030,9 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>5,1k</Span>
-                                                    </span>
+                                                    
                                                 </div>
-                                    
+                                                <div class="home-product-item__sold">Đã bán 58</div>
                                             </div>
                                     
                                             <div class="home-product-item__origin">
@@ -981,7 +1050,7 @@
                                     </a>                               
                                 </div>
 
-                                <div class="grid__column-2-4">
+                                <div class="col l-2-4 m-4 c-6">
                                     <a href="#" class="home-product-link">
                                         <div class="home-product-item">
                                             <div class="home-product-item__img"
@@ -1024,12 +1093,10 @@
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
                                                     <i class="home-product-item__star--gold fas fa-star"></i>
-                                                    <span class="home-product-item__sold">
-                                                        Đã bán
-                                                        <Span>3,7k</Span>
-                                                    </span>
+                                                    
                                                 </div>
-                                    
+                                                <div class="home-product-item__sold">Đã bán 100</div>
+                                                
                                             </div>
                                     
                                             <div class="home-product-item__origin">
@@ -1089,9 +1156,9 @@
 
         <footer class="footer">
             <div class="footer__top">
-                <div class="grid">
-                    <div class="grid__row">
-                        <div class="grid__column-4">
+                <div class="grid wide footer__content">
+                    <div class="row">
+                        <div class="col l-4 m-4 c-4">
                             <div class="footer__top-item">
                                 <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/6c502a2641457578b0d5f5153b53dd5d.png" alt="" class="footer__top-img">
                                 <div class="footer__top-title">
@@ -1100,7 +1167,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="grid__column-4">
+                        <div class="col l-4 m-4 c-4">
                             <div class="footer__top-item">
                                 <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/16ead7e0a68c3cff9f32910e4be08122.png"
                                     alt="" class="footer__top-img">
@@ -1110,7 +1177,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="grid__column-4">
+                        <div class="col l-4 m-4 c-4">
                             <div class="footer__top-item">
                                 <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/511aca04cc3ba9234ab0e4fcf20768a2.png"
                                     alt="" class="footer__top-img">
@@ -1125,9 +1192,9 @@
             </div>
 
             <div class="footer__info">
-                <div class="grid">
-                    <div class="grid__row">
-                        <div class="grid__column-2-4">
+                <div class="grid wide footer__content">
+                    <div class="row">
+                        <div class="col l-2-4 m-4 c-6">
                             <h3 class="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
                             <ul class="footer-list">
                                 <li class="footer-item">
@@ -1165,7 +1232,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="grid__column-2-4">
+                        <div class="col l-2-4 m-4 c-6">
                             <h3 class="footer__heading">VỀ SHOPEE</h3>
                             <ul class="footer-list">
                                 <li class="footer-item">
@@ -1197,7 +1264,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="grid__column-2-4">
+                        <div class="col l-2-4 m-4 c-6">
                             <h3 class="footer__heading">ĐƠN VỊ VẬN CHUYỂN</h3>
                             <div class="footer__transport">
                                 <p class="footer__transport-name">Shopee Xpress</p>
@@ -1220,7 +1287,7 @@
                             
                             </div>
                         </div>
-                        <div class="grid__column-2-4">
+                        <div class="col l-2-4 m-4 c-6">
                             <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
                             <ul class="footer-list">
                                 <li class="footer-item">
@@ -1243,7 +1310,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="grid__column-2-4">
+                        <div class="col l-2-4 m-8 c-12">
                             <h3 class="footer__heading">TẢI ỨNG DỤNG SHOPEE NGAY THÔI</h3>
                             <div class="footer__download">
                                 <a href="" class="footer__download-app-link">
@@ -1266,8 +1333,8 @@
                 </div>
             </div>
             <div class="footer__copyright">
-                <div class="grid">
-                    <div class="grid__row">
+                <div class="grid wide footer__content hide-on-mobile">
+                    <div class="row">
                         <div class="footer__copyright-policy">
                             <div class="footer__policy-list">
                                 <a href="" class="footer__policy-link">CHÍNH SÁCH BẢO MẬT</a>

@@ -1,6 +1,6 @@
 :root {
     --primary-color: #EE4D2D;
-    --while-color : #fff;
+    --white-color : #fff;
     --black-color: #000;
     --text-color: #333;
     --border-color: #dbdbdb;
@@ -8,7 +8,7 @@
     --header-height: 120px;
     --navbar-height: 32px;
     --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
-
+    --header-sort-bar-height: 46px;
 }
 
 *{
@@ -23,16 +23,6 @@ html {
 }
 
 /*Responsive */
-
-.grid {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto; /* để căn giữa khối này khi nằm trong một cái khối khác */
-}
-
-.grid__full-width {
-    width: 100%;
-}
 
 .grid__row {
     display: flex;
@@ -135,7 +125,7 @@ html {
     outline: none;
     cursor: pointer;
     color: var(--text-color);
-    background-color: var(--while-color);
+    background-color: var(--white-color);
     display:inline-flex;
     justify-content: center;
     align-items: center;
@@ -155,7 +145,7 @@ html {
 
 .btn.btn--primary {
     background-color: var(--primary-color);
-    color: var(--while-color);
+    color: var(--white-color);
 }
 
 .btn.btn--disabled {
@@ -171,12 +161,12 @@ html {
     height: 34px;
     padding: 0 12px;
     border-radius: 2px;
-    background-color: var(--while-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 1px 1px #e0e0e0;
     z-index: 1;
+    background-color: var(--white-color);
 }
 
 .select-input:hover .select-input__list {
@@ -202,7 +192,7 @@ html {
     list-style: none;
     border-radius: 2px;
     padding: 10px 16px 8px 16px;
-    background-color: var(--while-color);
+    background-color: var(--white-color);
     display: none;
     animation: fadeIn linear 0.1s;
     box-shadow: 0 1px 1px #e0e0e0;
@@ -245,7 +235,7 @@ html {
 
 .pagination-item--active .pagination-item-link{
     background-color: var(--primary-color);
-    color: var(--while-color)
+    color: var(--white-color)
 }
 
 .pagination-item--active .pagination-item-link:hover {
